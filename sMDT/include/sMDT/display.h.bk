@@ -1,0 +1,22 @@
+#ifndef _display_h_
+#define _display_h_
+
+#include "TFile.h"
+#include "TTree.h"
+
+#include <fstream>
+
+
+class display
+{
+    private:
+
+
+
+    public:
+        display(const std::string &fin, const std::string &fout);
+        ~display(){};
+
+};
+
+#endif
