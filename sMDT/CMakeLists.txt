@@ -1,7 +1,8 @@
 project (sMDTLib)
 
 add_library(${PROJECT_NAME}
-    #src/sMDTClient.cxx
+    src/monitor.cxx
+    src/gui.cxx
     src/sMDT.cxx
     src/server.cxx
     )

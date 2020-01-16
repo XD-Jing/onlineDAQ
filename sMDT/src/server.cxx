@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 server::server(){
+    i = 0;
     try {Init();}
     catch (const char* msg) {std::cerr << msg << std::endl;}
 }
@@ -13,18 +14,21 @@ server::~server(){
 }
 
 int server::Init(){
-    memset(&addr,0,sizeof(addr));
-    addr.sin_family=AF_INET;
-    addr.sin_addr.s_addr=INADDR_ANY;
-    addr.sin_port=htons(8080);
+    memset(&serv_addr,0,sizeof(serv_addr));
+    serv_addr.sin_family=AF_INET;
+    //serv_addr.sin_addr.s_addr=INADDR_ANY;
+    serv_addr.sin_addr.s_addr=inet_addr("127.0.0.1");
+    serv_addr.sin_port=htons(8080);
 
     if ((sockfd=socket(AF_INET,SOCK_DGRAM,0))<0) throw "socket error";
-    if (bind(sockfd,(const struct sockaddr *)&addr,sizeof(addr))<0) throw "bind error";
+    //if (bind(sockfd,(const struct sockaddr *)&serv_addr,sizeof(serv_addr))<0) throw "bind error";
 
     return 0;
 }
 
 int server::Send(buffXDC buffer){
-    if((len=sendto(sockfd, &buffer, sizeof(buffer), 0, (struct sockaddr *)&addr, sizeof(struct sockaddr)))<0) throw "sendint error";
+    i++;
+    if((len=sendto(sockfd, &buffer, 2*sizeof(buffer), 0, (struct sockaddr *)&serv_addr, sizeof(struct sockaddr)))<0) throw "sendint error";
+    //if((len=sendto(sockfd, &i, sizeof(i), 0, (struct sockaddr *)&serv_addr, sizeof(struct sockaddr)))<0) throw "sendint error";
     return 0;
 }

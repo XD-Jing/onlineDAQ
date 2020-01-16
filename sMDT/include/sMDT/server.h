@@ -14,10 +14,11 @@ class server
 {
     private:
 
+        int i;
         int sockfd;
         int len;
-        struct sockaddr_in my_addr;
-        struct sockaddr_in addr;
+        struct sockaddr_in clie_addr;
+        struct sockaddr_in serv_addr;
         int sin_size;
         char buf[BUFSIZ];
 

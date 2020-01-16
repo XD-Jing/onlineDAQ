@@ -8,7 +8,7 @@ include(${ROOT_USE_FILE})
 
 add_subdirectory(sMDT)
 
-foreach(exec sMDT-server)
+foreach(exec sMDT-server gui)
     add_executable(${exec} src/${exec}.cxx)
     target_link_libraries(${exec} sMDTLib ${ROOT_LIBRARIES})
 endforeach()

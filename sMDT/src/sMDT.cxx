@@ -129,10 +129,11 @@ int sMDT :: process(){
                     for (int nb = 1; nb<=h.second->GetNbinsX(); nb++){
                         msgXDC.binContents[nb-1] = (int) h.second->GetBinContent(nb);
                     }
+                    if (tdc==1 && channel ==1)
                     UDP->Send(msgXDC);
                 }
                 MSG(event);
-                usleep(100000);
+                usleep(1000000);
             }
             vSignalHead.clear(); vSignalTrail.clear(); vTriggerHead.clear(); vTriggerTrail.clear();
         }
