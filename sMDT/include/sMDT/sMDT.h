@@ -3,10 +3,12 @@
 
 #include "TFile.h"
 #include "TTree.h"
+#include <TH1F.h>
 
 #include <fstream>
 
-#include <sMDT/FormatTDC.h>
+#include <sMDT/format.h>
+#include <sMDT/server.h>
 
 class sMDT
 {
@@ -31,6 +33,11 @@ class sMDT
         std::vector<double> v_LUT;
         double ADC_correlation(double w);
         void initBranches();
+
+        std::map<std::pair<int, int>, TH1F*> TH1_TDC;
+
+        server* UDP;
+        buffXDC msgXDC;
 
     public:
         sMDT(const std::string &fin, const std::string &fout);

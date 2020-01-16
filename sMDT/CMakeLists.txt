@@ -1,9 +1,9 @@
 project (sMDTLib)
 
 add_library(${PROJECT_NAME}
-    src/sMDTClient.cxx
+    #src/sMDTClient.cxx
     src/sMDT.cxx
-    src/sMDTServer.cxx
+    src/server.cxx
     )
 #add_library(sub::lib1 ALIAS ${PROJECT_NAME})
 
